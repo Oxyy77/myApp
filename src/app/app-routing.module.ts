@@ -3,14 +3,22 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'welcome',
-    loadChildren: () => import('./modules/auth/welcome/welcome.module').then( m => m.WelcomeModule)
+    path: '',
+    loadChildren: () =>
+      import('./modules/auth/welcome/welcome.module')
+        .then(m => m.WelcomeModule)
   },
   {
-    path: '',
-    redirectTo: 'welcome',
-    pathMatch: 'full'
+    path: 'auth',
+    loadChildren: () =>
+      import('./modules/auth/auth-routing.module')
+        .then(m => m.AuthRoutingModule)
   },
+  {
+    path: '**',
+    redirectTo: '',
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({

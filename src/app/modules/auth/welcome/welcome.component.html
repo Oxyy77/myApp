@@ -1,3 +1,59 @@
-<h1 class="text-3xl font-bold underline">
-  Hello world!
-</h1>
+<ion-content [fullscreen]="true">
+  <div class="h-full flex flex-col relative">
+    <!-- Progress bars -->
+    <div class="absolute top-0 left-0 right-0 z-10 px-5 pt-5 pb-2">
+      <!-- Progress bars row -->
+      <div class="flex gap-2 mb-2">
+        <div *ngFor="let slide of welcomeSlides; let i = index"
+          class="flex-1 h-1 bg-white/30 rounded-full overflow-hidden">
+          <div class="h-full bg-white rounded-full transition-all duration-300"
+            [style.width]="i <= currentSlide ? '100%' : '0%'">
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <div class="flex-1">
+         <!-- count -->
+          <div class="text-white text-md">
+            <span class="font-bold" >{{ currentSlide + 1 }}</span> / <span>{{ welcomeSlides.length }}</span>
+          </div>
+        </div>
+        <div>
+          <ion-button fill="clear" class="text-white" (click)="startApp()">
+            Skip
+          </ion-button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slides Container -->
+    <div #slideContainer class="slide-container flex-1 overflow-x-auto overflow-y-hidden snap-x snap-mandatory flex"
+      (scroll)="onScroll($event)">
+      <div *ngFor="let slide of welcomeSlides; let i = index"
+        class="slide-item w-full h-full flex-shrink-0 snap-start flex flex-col justify-between px-6 pt-20 pb-10 {{ slide.color }}">
+        <!-- Illustration area -->
+        <div class="flex-1 flex items-center justify-center">
+          <div class="w-48 h-48 bg-white/20 rounded-full flex items-center justify-center animate-float">
+            <ion-icon [name]="slide.icon" class="text-white text-[120px]"></ion-icon>
+          </div>
+        </div>
+
+        <!-- Text content -->
+        <div class="text-center text-white">
+          <h1 class="text-3xl font-bold mb-4 leading-tight">{{ slide.title }}</h1>
+          <p class="text-base leading-relaxed opacity-90 px-4">{{ slide.description }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom button
+    <div class="absolute bottom-0 left-0 right-0 px-6 pb-10 pt-5">
+      <ion-button expand="block" class="h-14 text-base font-semibold rounded-xl"
+        style="--background: #1a1a1a; --background-activated: #000000; --color: white;" (click)="next()">
+        {{ getButtonText() }}
+        <ion-icon slot="end" name="arrow-forward" *ngIf="currentSlide < welcomeSlides.length - 1"></ion-icon>
+      </ion-button>
+    </div> -->
+  </div>
+</ion-content>

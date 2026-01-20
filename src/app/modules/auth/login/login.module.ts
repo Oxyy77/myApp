@@ -1,24 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { WelcomeComponent } from './welcome.component';
 import { RouterModule, Routes } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
+import { LoginComponent } from './login.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: WelcomeComponent
+    component: LoginComponent
   }
 ];
 
+
 @NgModule({
-  declarations: [WelcomeComponent],
+  declarations: [LoginComponent],
   imports: [
     CommonModule,
-    FormsModule,
-    IonicModule,
     RouterModule.forChild(routes)
   ]
 })
-export class WelcomeModule { }
+export class LoginModule { }
