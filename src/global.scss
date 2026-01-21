@@ -37,11 +37,27 @@
  */
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import "@ionic/angular/css/palettes/dark.system.css";
+@import "@ionic/angular/css/palettes/dark.class.css";
+/* @import '@ionic/angular/css/palettes/dark.system.css'; */
+
+/**
+ * App Custom CSS
+ * -----------------------------------------------------
+ * Custom CSS used in this app.
+ *
+ */
+@import './theme/custom.scss';
+
+/**
+ * App Custom Fonts
+ * -----------------------------------------------------
+ * Custom fonts used in this app.
+ *
+ */
+@import './theme/fonts.scss';
 
 * {
-  font-family: 'Century Gothic Paneuropean', sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }
 
 body {
