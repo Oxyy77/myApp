@@ -1,59 +1,57 @@
 <ion-content [fullscreen]="true">
-  <div class="h-full flex flex-col relative">
-    <!-- Progress bars -->
+  <div class="h-full flex flex-col relative bg-white">
+    <!-- Top section with progress bars and skip -->
     <div class="absolute top-0 left-0 right-0 z-10 px-5 pt-5 pb-2">
       <!-- Progress bars row -->
-      <div class="flex gap-2 mb-2">
+      <div class="flex gap-2 mb-3">
         <div *ngFor="let slide of welcomeSlides; let i = index"
-          class="flex-1 h-1 bg-white/30 rounded-full overflow-hidden">
-          <div class="h-full bg-white rounded-full transition-all duration-300"
+          class="flex-1 h-1 bg-gray-200 rounded-full overflow-hidden">
+          <div class="h-full bg-black rounded-full transition-all duration-300"
             [style.width]="i <= currentSlide ? '100%' : '0%'">
           </div>
         </div>
       </div>
 
-      <div class="flex items-center justify-between">
-        <div class="flex-1">
-         <!-- count -->
-          <div class="text-white text-md">
-            <span class="font-bold" >{{ currentSlide + 1 }}</span> / <span>{{ welcomeSlides.length }}</span>
-          </div>
-        </div>
-        <div>
-          <ion-button fill="clear" class="text-white" (click)="startApp()">
-            Skip
-          </ion-button>
-        </div>
+      <!-- Skip button row -->
+      <div class="flex justify-end">
+        <button class="text-gray-500 text-sm font-medium bg-transparent border-0 px-4 py-2" (click)="skip()">
+          Skip
+        </button>
       </div>
     </div>
 
     <!-- Slides Container -->
-    <div #slideContainer class="slide-container flex-1 overflow-x-auto overflow-y-hidden snap-x snap-mandatory flex"
+    <div #slideContainer
+      class="slide-container flex-1 overflow-x-auto overflow-y-hidden snap-x snap-mandatory flex mt-20"
       (scroll)="onScroll($event)">
       <div *ngFor="let slide of welcomeSlides; let i = index"
-        class="slide-item w-full h-full flex-shrink-0 snap-start flex flex-col justify-between px-6 pt-20 pb-10 {{ slide.color }}">
+        class="slide-item w-full h-full flex-shrink-0 snap-start flex flex-col justify-between px-8 py-10">
+
         <!-- Illustration area -->
         <div class="flex-1 flex items-center justify-center">
-          <div class="w-48 h-48 bg-white/20 rounded-full flex items-center justify-center animate-float">
-            <ion-icon [name]="slide.icon" class="text-white text-[120px]"></ion-icon>
+          <div class="illustration-container w-80 h-80">
+            <!-- Placeholder for illustration - replace with actual SVG/image -->
+            <div class="w-full h-full bg-gray-50 rounded-3xl flex items-center justify-center">
+              <ion-icon [name]="slide.icon" class="text-gray-300" style="font-size: 120px;"></ion-icon>
+            </div>
           </div>
         </div>
 
         <!-- Text content -->
-        <div class="text-center text-white">
-          <h1 class="text-3xl font-bold mb-4 leading-tight">{{ slide.title }}</h1>
-          <p class="text-base leading-relaxed opacity-90 px-4">{{ slide.description }}</p>
+        <div class="text-center mt-8">
+          <h1 class="text-3xl font-bold text-black mb-4 leading-tight px-4">{{ slide.title }}</h1>
+          <p class="text-base text-gray-500 leading-relaxed px-6">{{ slide.description }}</p>
         </div>
       </div>
     </div>
 
-    <!-- Bottom button
-    <div class="absolute bottom-0 left-0 right-0 px-6 pb-10 pt-5">
-      <ion-button expand="block" class="h-14 text-base font-semibold rounded-xl"
-        style="--background: #1a1a1a; --background-activated: #000000; --color: white;" (click)="next()">
+    <!-- Bottom button -->
+    <div class="px-8 pb-10 pt-5">
+      <ion-button expand="block" class="next-btn h-14 text-base font-semibold rounded-xl"
+        style="--background: #000000; --background-activated: #1a1a1a; --color: white;" (click)="next()">
         {{ getButtonText() }}
         <ion-icon slot="end" name="arrow-forward" *ngIf="currentSlide < welcomeSlides.length - 1"></ion-icon>
       </ion-button>
-    </div> -->
+    </div>
   </div>
 </ion-content>

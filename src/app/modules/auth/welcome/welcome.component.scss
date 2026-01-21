@@ -1,20 +1,6 @@
-// Animation for floating icon
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-}
-
-.animate-float {
-  animation: float 3s ease-in-out infinite;
-}
-
 // Remove Ionic default styles
 ion-content {
-  --background: transparent;
+  --background: #ffffff;
 }
 
 // Slide container with CSS scroll snap
@@ -34,22 +20,51 @@ ion-content {
   min-width: 100%;
 }
 
+// Illustration container - fixed size
+.illustration-container {
+  width: 320px;
+  height: 320px;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Button styles
+.next-btn {
+  --border-radius: 12px;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
 // Responsive adjustments for smaller screens
 @media (max-height: 667px) {
-  .animate-float {
-    width: 150px !important;
-    height: 150px !important;
-    
-    ion-icon {
-      font-size: 90px !important;
-    }
+  .illustration-container {
+    width: 240px !important;
+    height: 240px !important;
   }
   
-  .text-3xl {
+  h1 {
     font-size: 1.75rem !important;
   }
   
-  .text-base {
+  p {
     font-size: 0.875rem !important;
+  }
+}
+
+// Safe area for notch devices
+@supports (padding: max(0px)) {
+  .absolute.top-0 {
+    padding-top: max(20px, env(safe-area-inset-top));
   }
 }

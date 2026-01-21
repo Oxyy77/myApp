@@ -14,25 +14,25 @@ export class WelcomeComponent {
       title: 'Manage Your Team',
       description: 'Effortlessly manage employee data, attendance, and performance all in one place.',
       icon: 'people-outline',
-      color: 'bg-gradient-to-br from-orange-500 to-orange-600'
+      illustration: '👥'
     },
     {
-      title: 'Track Attendance',
-      description: 'Real-time attendance tracking with clock-in/out features and comprehensive reports.',
+      title: 'Effortless Attendance Tracking',
+      description: 'Log your attendance effortlessly. Clock in, clock out - it\'s that simple. Focus on your work, and we\'ll take care of the rest.',
       icon: 'time-outline',
-      color: 'bg-gradient-to-br from-teal-500 to-teal-600'
+      illustration: '⏰'
     },
     {
       title: 'Leave Management',
       description: 'Submit and approve leave requests seamlessly with our intuitive leave management system.',
       icon: 'calendar-outline',
-      color: 'bg-gradient-to-br from-emerald-400 to-emerald-500'
+      illustration: '📅'
     },
     {
       title: 'Payroll Made Easy',
       description: 'Automate payroll processing and generate accurate salary reports every month.',
       icon: 'card-outline',
-      color: 'bg-gradient-to-br from-rose-400 to-rose-500'
+      illustration: '💰'
     }
   ];
 
@@ -70,7 +70,7 @@ export class WelcomeComponent {
 
   startApp() {
     // Navigate to login or home page
-    this.router.navigate(['/login']);
+    this.router.navigate(['/auth/login']);
   }
 
   getButtonText(): string {
